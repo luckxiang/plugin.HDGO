@@ -13,7 +13,7 @@ function ScrapeList(href, pageHtml) {
       title: element.children[1].textContent.split('\n')[0],
       //image: BASE_URL + element.getElementByTagName("img")[0].attributes.getNamedItem('src').value,
       description: element.children[1].textContent//.split('\n')[1],
-    })
+    });
   }
   //search list
   //log.p(dle_content.getElementByClassName('res-search').length)
@@ -32,7 +32,7 @@ function ScrapeList(href, pageHtml) {
 
   //endOfData = document.getElementsByClassName('navigation').length ? document.getElementsByClassName('pagesList')[0].children[document.getElementsByClassName('pagesList')[0].children.length - 2].nodeName !== 'A' : true
   returnValue.endOfData = pageHtml.dom.getElementByClassName('navigation').length ? pageHtml.dom.getElementByClassName('pagesList')[0].children[pageHtml.dom.getElementByClassName('pagesList')[0].children.length - 2].nodeName !== 'a' : true;
-  return returnValue
+  return returnValue;
 }
 
 var total = 0;
@@ -40,15 +40,15 @@ function populateItemsFromList(page, list) {
   log.d({
     function: 'populateItemsFromList',
     list: list
-  })
+  });
   for (i = 0; i < list.length; i++) {
-      total++
+      total++;
     page.appendItem(PREFIX + ":page:" + (list[i].url.match(/\d+/)[0]), "directory", {
       title: list[i].title,
       description: list[i].description,
       icon: list[i].image,
       extra_data:"total dynamic:"+total
-    })
+    });
     page.entries++;
   }
 }
@@ -137,7 +137,7 @@ function ScrapePage(page, pageHtml) {
     });
 
 
-  } else page.redirect(PREFIX + ":play:" + JSON.stringify(data));
+  } else videoPage(page, JSON.stringify(data));
 }
 
 

@@ -101,7 +101,7 @@ new page.Route(PREFIX + ":SEASON:(.*)", function (page, data) {
  browse.season(page, data);
 });
 //
-new page.Route(PREFIX + ":play:(.*)", function (page, data) {
+function videoPage(page, data) {
   var canonicalUrl = PREFIX + ":play:" + data;
   data = JSON.parse(data);
   log.d({
@@ -124,21 +124,20 @@ new page.Route(PREFIX + ":play:(.*)", function (page, data) {
     subtitles: []
   };
   api.call(page, data.url, null, function (pageHtml) {
-    log.d(pageHtml.text.toString())
-    content = pageHtml.text.toString()
+    log.d(pageHtml.text.toString());
+    content = pageHtml.text.toString();
     regExp = /(http:.*?(?:mp4|\.flv))/g;
     while (((itemData = regExp.exec(content)) !== null) /*&& (i <= numItems)*/) {
 
       videoparams.sources = [{
-        url: itemData[1],
+        url: itemData[1]
         //  mimetype: /mp4/.test(itemData[1])? 'video/mp4' :''
       }
       ]
 
-      log.d(videoparams)
-      type = /mp4/.test(itemData[1]) ? '[MP4]' : '[FLV]'
-      resolution = (/(\d+)-/.test(itemData[1]) ? '-' + /(\d+)-/.exec(itemData[1])[1] + '-' : '-')
-      data.video_url = itemData[1]
+      type = /mp4/.test(itemData[1]) ? '[MP4]' : '[FLV]';
+      resolution = (/(\d+)-/.test(itemData[1]) ? '-' + /(\d+)-/.exec(itemData[1])[1] + '-' : '-');
+      data.video_url = itemData[1];
       video = "videoparams:" + JSON.stringify(videoparams);
       page.appendItem(video, "video", {
         title: type + resolution + data.title,
@@ -151,9 +150,11 @@ new page.Route(PREFIX + ":play:(.*)", function (page, data) {
  //   title: 'найти ' + data.title
  // });
   page.type = "directory";
-  page.metadata.logo = LOGO;
+ // page.metadata.logo = LOGO;
   page.loading = false;
-});
+};
+
+new page.Route(PREFIX + ":play:(.*)", videoPage);
 //
 /*new page.Route(PREFIX + ":search:(.*)", function(page, query) {
   page.appendItem(PREFIX + ":search:" + query, "directory", {
