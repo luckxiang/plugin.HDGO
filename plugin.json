@@ -1,15 +1,15 @@
 {
-  "type": "ecmascript",
-  "apiversion": 2,
-  "id": "HDGO",
-  "file": "HDGO.js",
-  "showtimeVersion": "5",
-  "version": "0.0.4",
-  "author": "Buksa",
-  "title": "HDGO",
-  "icon": "logo.bmp",
-  "category": "video",
-  "synopsis": "HDGO  - фильмы, сериалы онлайн",
-  "description": "HDGO - is the integration of the website <a href=\"http://hdgo.club/\">hdgo.club</a> into Movian",
-  "homepage": "https://github.com/Buksa"
+    "type": "ecmascript",
+    "apiversion": 2,
+    "id": "HDGO",
+    "file": "HDGO.js",
+    "showtimeVersion": "5",
+    "version": "0.0.6",
+    "author": "Buksa",
+    "title": "HDGO",
+    "icon": "logo.bmp",
+    "category": "video",
+    "synopsis": "HDGO  - фильмы, сериалы онлайн",
+    "description": "HDGO - is the integration of the website <a href=\"http://hdgo.club/\">hdgo.club</a> into Movian",
+    "homepage": "http://github.com/luckxiang/plugin.HDGO.git"
 }
