@@ -1,10 +1,10 @@
 exports.call = function (page, URL, args, callback) {
   var opts = {
     method: 'GET',
-    // headers: {
-    //   'User-Agent': UA,
-    //   'Referer': referer,
-    // },
+    headers: {
+      'User-Agent': UA,
+      'Referer': referer,
+    },
     args: [args || {}],
     debug: service.debug,
     noFail: true, // Don't throw on HTTP errors (400- status code)
@@ -12,10 +12,10 @@ exports.call = function (page, URL, args, callback) {
     caching: true, // Enables Movian's built-in HTTP cache
   };
 
-  opts['headers'] = {
-    'User-Agent': UA,
-    'Referer': 'http://hdgo.club',
-  }
+  // opts['headers'] = {
+  //   'User-Agent': UA,
+  //   'Referer': referer,
+  // }
   log.d({
     'make request for': URL,
     'with opts': opts
