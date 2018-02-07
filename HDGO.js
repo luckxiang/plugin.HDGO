@@ -157,7 +157,7 @@ new page.Route(PREFIX + ":search:(.*)", function(page, query) {
     page.metadata.icon = LOGO;
     page.metadata.title = 'Search results for: ' + query;
     page.type = 'directory';
-    browse.search(page, query, 'serials');
+  //  browse.search(page, query, 'serials');
     browse.search(page, query, 'films');
 });
 //
@@ -175,9 +175,9 @@ new page.Route(PREFIX + ":start", function(page) {
     page.metadata.title = "HDGO";
     page.metadata.icon = LOGO;
 
-    page.appendItem(PREFIX + ":search:", 'search', {
-        title: 'Search'
-    });
+ //   page.appendItem(PREFIX + ":search:", 'search', { //hdgo的search不好用,不要开启
+  //      title: 'Search'
+  //  });
     page.appendItem(PREFIX + ':browse:/serials:Сериалы', 'directory', {
         title: 'Сериалы'
     });

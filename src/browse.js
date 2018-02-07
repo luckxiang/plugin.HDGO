@@ -140,7 +140,6 @@ function ScrapePage(page, pageHtml) {
 
 
 
-
 exports.search = function (page, query, type) {
     page.loading = true;
     page.type = 'directory';
@@ -171,8 +170,19 @@ exports.search = function (page, query, type) {
         }
 
         list = ScrapeList('', pageHtml)
-
-        populateItemsFromList(page, list);
+        if(list.length == 0)
+        {
+            var videoParams = {
+            sources: [{
+                url: "null",
+                }],
+            no_subtitle_scan: true,
+            subtitles: []
+            }
+            page.appendItem("videoparams:" + JSON.stringify(videoParams), "video", {title: "No Content",});
+        }
+        else
+            populateItemsFromList(page, list);
     } catch (err) {
         log.d('aMovies - Ошибка поиска: ' + err);
         log.e(err);
